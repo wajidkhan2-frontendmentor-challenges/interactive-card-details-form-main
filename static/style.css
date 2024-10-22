@@ -151,6 +151,7 @@ border-radius: 10px;
     border-radius: calc( var(--Cu-border) + var(--cu-border-redius) ); */
 }
 
+
 .ffinput-aa {
     content: '';
     background-color: var(--clr-nuet-2);
