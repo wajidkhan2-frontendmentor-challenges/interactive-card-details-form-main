@@ -66,25 +66,49 @@
 							</label>
 							<p class="error" id="card-holder-error">This is error</p>
 						</div>
+						
 						<div class="Card-Number" data-error="true">
-							<label for="for-Card-Number">Card Number</label>
-							<input type="text" id="for-Card-Number" class="form-field-input field-label-gap " placeholder="e.g. 1234 5678 9123 0000" aria-describedby="Card-Number-error">
+							<label for="for-Card-Number" class="field-label-gap">
+								<p>Card Number</p>
+								<div class="ffinput-div">
+									<input type="text" id="for-Card-Number" class="ffinput" 
+									placeholder="e.g. 1234 5678 9123 0000" aria-describedby="Card-Number-error">
+									<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
+								</div>
+							</label>
 							<p class="error" id="Card-Number-error">This is error</p>
 						</div>
 
 						<div class="mm-yy-cvc">
 							<div class="mm-yy-sec" data-error="true">
 								<p>Exp. Date (MM/YY)</p>
-								<div class="mm-yy-fields field-label-gap">
-									<input type="number" class="form-field-input" placeholder="MM" aria-describedby="MM-YY-error">
-									<input type="number" class="form-field-input" placeholder="YY" aria-describedby="MM-YY-error">
+								<div class="mm-yy-fields">
+									
+									<label for="t-mm" >
+										<div class="ffinput-div">
+											<input type="number" class="ffinput" id="t-mm" placeholder="MM" aria-describedby="MM-YY-error">
+											<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
+										</div>
+									</label>
+									<label for="t-yy" >
+										<div class="ffinput-div">
+											<input type="number" class="ffinput" id="t-yy" placeholder="YY" aria-describedby="MM-YY-error">
+											<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
+										</div>
+									</label>
+
 								</div>
 								<p class="error" id="MM-YY-error">This is error</p>
 							</div>
 
 							<div class="CVC" data-error="true">
-								<label for="for-CVC">CVC</label>
-								<input type="text" id="for-Card-Number" class="form-field-input field-label-gap " placeholder="e.g. 123" aria-describedby="CVC-error">
+								<label for="for-CVC" >
+									<p>CVC</p>
+									<div class="ffinput-div">
+										<input type="text" id="for-CVC" class="ffinput" placeholder="e.g. 123" aria-describedby="CVC-error">
+										<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
+									</div>
+								</label>
 								<p class="error" id="CVC-error">This is error</p>
 							</div>
 

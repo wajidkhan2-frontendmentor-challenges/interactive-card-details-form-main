@@ -12,7 +12,7 @@
     border-color: linear-gradient(to right, red , yellow);
 } */
 
-
+.ffinput-aa, .ffinput-ac { transition: 0.5s; }
 .ffinput-div:hover > .ffinput-aa, .ffinput:focus ~ .ffinput-aa {
     opacity: 0;
 }
