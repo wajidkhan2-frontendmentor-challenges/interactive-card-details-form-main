@@ -1,0 +1,139 @@
+:root {
+
+    /* color primary */
+	--Linear-gradient-p1: hsl(249, 99%, 64%);
+	--Linear-gradient-p2: hsl(278, 94%, 30%);
+
+	--clr-prim-1: hsl(0, 100%, 66%);
+
+    /* color neutral */
+	--clr-nuet-1: hsl(0, 0%, 100%); /* White */
+	--clr-nuet-2: hsl(270, 3%, 87%); /* Light grayish violet */
+	--clr-nuet-3: hsl(279, 6%, 55%); /* Dark grayish violet */
+	--clr-nuet-4: hsl(278, 68%, 11%); /* Very dark violet */
+
+    /* typography */
+	--fw-medium: 500;
+	--fs-main: 18px;
+}
+
+@font-face {
+	font-family: "SpaceGrotesk";
+	src: url("./font/SpaceGrotesk-VariableFont_wght.ttf");
+}
+
+
+body {
+    padding: 0;
+    margin: 0;
+	font-family: "SpaceGrotesk";
+	/* font-weight: var(--fw-medium); */
+	font-size: var(--fs-main);
+}
+
+input, button {
+    font-size: inherit;
+    font-family: inherit;
+}
+
+h1,h2,p {
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.form-section {
+	font-family: "SpaceGrotesk";
+	/* font-weight: var(--fw-medium); */
+	font-size: var(--fs-main);
+}
+
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+	-webkit-clip-path: inset(50%) !important;
+		clip-path: inset(50%) !important;  /* 2 */
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;            /* 3 */
+}
+
+
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+	clip: auto !important;
+	-webkit-clip-path: none !important;
+		clip-path: none !important;
+	height: auto !important;
+	margin: auto !important;
+	overflow: visible !important;
+	width: auto !important;
+	white-space: normal !important;
+}
+
+/* main {
+    /* background-color: var(--clr-prim-2); *
+    /* background-color: var(--clr-neut-5); *
+    padding: 1px;
+} */
+
+legend {
+    padding: 0;
+    display: table;
+}
+fieldset {
+    border: 0;
+    padding: 0.01em 0 0 0;
+    margin: 0;
+    min-width: 0;
+}
+body:not(:-moz-handler-blocked) fieldset {
+    display: table-cell;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button,
+input[type=number] /* Firefox */ {
+    /* Chrome, Safari, Edge, Opera */
+    -webkit-appearance: none;
+
+    /* Firefox */
+    -moz-appearance: textfield;
+    margin: 0;
+}
+
+
+@media only screen and (min-width: 69.375em ) /* min-width:  1110px */ {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

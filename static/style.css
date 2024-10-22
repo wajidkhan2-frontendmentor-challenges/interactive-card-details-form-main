@@ -1,0 +1,268 @@
+.cards,
+.card-front,
+.card-back {
+    position: relative;
+}
+
+.card-front-waraper,
+.card-back-waraper {
+    /* width: 66%; */
+    width: 315px;
+}
+
+.card-front-content,
+.card-front-waraper,
+.card-back-waraper,
+.card-back > p {
+    position: absolute;
+}
+
+.card-front-waraper {
+    top: 59%;
+    left: 5%;
+    z-index: 1;
+}
+.card-back-waraper {
+    right: 5%;
+    top: 17%;
+}
+
+.card-front-logo {
+    width: 20%;
+}
+.card-front-content {
+    color: var(--clr-nuet-1);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: red; */
+    --card-front-padd: 30px;
+    width: calc(100% -  var(--card-front-padd) - 1px);
+    height: calc(100% - var(--card-front-padd) - 1px);
+}
+
+.card-number {
+    /* font-size: 5vw; */
+    font-size: 23px;
+    margin-bottom: 4%;
+}
+.card-holder-name {
+    /* font-size: 2.5vw; */
+    font-size: 14px;
+}
+
+.card-back > p {
+    color: var(--clr-nuet-1);
+    /* font-size: 3.5vw; */
+    font-size: 16px;
+    right: 12%;
+    top: 43%;
+}
+
+
+
+
+
+
+
+
+
+
+
+.form {
+    width: 90%;
+    margin-inline: auto;
+    /* margin-top: 13%; */
+    margin-top: 80px;
+    color: var(--clr-nuet-4);
+}
+
+.form-form > div {
+    margin-bottom: 15px;
+}
+
+/* .form-field-input {
+    width: 100%;
+    padding: 12px;
+border-radius: 10px;
+    border: 1px solid var(--clr-nuet-2);
+    box-sizing: border-box;
+    font-weight: 500;
+    position: relative;
+}
+
+
+
+.form-field-input::placeholder {
+    color: var(--clr-nuet-1);
+    color: var(--clr-nuet-3);
+    opacity: 1; Firefox
+}
+.form-field-input::-ms-input-placeholder {
+    color: var(--clr-nuet-3);
+} */
+
+
+.field-label-gap {
+    margin-block: 5px;
+}
+
+.sub-btn, .cont-btn {
+    width: 100%;
+    background-color: var(--clr-nuet-4);
+    color: var(--clr-nuet-1);
+    border: 1px solid var(--clr-nuet-4);
+    padding: 12px;
+    border-radius: 5px;
+    color: var(--clr-nuet-1);
+}
+
+.success-message { 
+    margin-top: 30px;
+    text-align: center;
+}
+.suces-icon {
+    width: 75px;
+    margin-inline: auto;
+    margin-bottom: 35px;
+}
+.suces-msg-prim {
+    font-size: 30px;
+    color: var(--clr-nuet-4);
+    font-weight: var(--fw-medium);
+    text-transform: uppercase;
+
+    margin-bottom: 20px;
+}
+.suces-msg-sec {
+    color: var(--clr-nuet-3);
+    margin-bottom: 20px;
+}
+
+
+
+.ffinput-div {
+    /* border: 1px solid black; */
+    --Cu-border: 1px;
+    --cu-border-redius: 5px;
+    padding: 12px;
+    position: relative;
+    /* background-image: linear-gradient(90deg, var(--Linear-gradient-p2), var(--Linear-gradient-p1));
+    border-radius: calc( var(--Cu-border) + var(--cu-border-redius) ); */
+}
+
+.ffinput-aa {
+    content: '';
+    background-color: var(--clr-nuet-2);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: 2;
+    border-radius: calc( var(--Cu-border) + var(--cu-border-redius) );
+
+    opacity: 1;
+}
+.ffinput-ab {
+    content: '';
+    background-color: white;
+
+    position: absolute;
+    left:   var(--Cu-border);
+    right:  var(--Cu-border);
+    top:    var(--Cu-border);
+    bottom: var(--Cu-border);
+
+    border-radius: var(--cu-border-redius);
+    /* transform: translate(-50%, -50%); */
+    z-index: 3;
+}
+
+.ffinput-ac {
+    content: '';
+    /* background-color: var(--clr-nuet-2); */
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+    border-radius: calc( var(--Cu-border) + var(--cu-border-redius) );
+    background-image: linear-gradient(90deg, var(--Linear-gradient-p2), var(--Linear-gradient-p1));
+
+    opacity: 0;
+}
+
+.ffinput {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    border: none;
+    position: relative;
+    z-index: 4;
+}
+
+.ffinput:focus {
+    outline: 0;
+}
+
+
+
+@media only screen and (min-width: 69.375em ) /* min-width:  1110px */ {
+    
+    .card-front-waraper,
+    .card-back-waraper {
+        width: 393px;
+    }
+    
+    
+    .card-front-logo {
+        width: 70px;
+    }
+
+    .card-number {
+        font-size: 30px;
+        margin-bottom: 1rem;
+    }
+    .card-holder-name {
+        font-size: 1rem;
+    }
+
+    .card-back > p {
+        font-size: 1rem;
+        right: 12%;
+        top: 44.5%;
+    }
+
+    .card-back-waraper {
+        right: -200px;
+        top: 53%;
+    }
+    .card-front-waraper {
+        top: 21%;
+        right: -117px;
+        left:auto;
+        z-index: 1;
+      }
+
+
+
+
+
+
+
+
+
+    .form {
+        width: 100%;
+        margin-top: 0;
+    }
+    .form-form, .success-message {
+        margin-left: 131px;
+    }
+    .success-message {
+        margin-top: 0;
+        width: 380px;
+    }
+}
