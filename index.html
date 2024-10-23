@@ -18,7 +18,7 @@
 
 	<div class="layout">
 		<main class="main">
-			<section class="form-section">
+			<section class="form-section" id="app">
 				<div class="cards">
 					<div class="card-front-waraper">
 						<div class="card-front">
@@ -27,11 +27,11 @@
 								<img src="./images/card-logo.svg" class="card-front-logo" alt="">
 								
 								<div>
-									<p class="card-number">0000 0000 0000 0000</p>
+									<p class="card-number"> {{ cardNumber }} </p>
 									
 									<div class="card-holder-name flex-box flex-row flex-spaced">
-										<p>Jane Appleseed</p>
-										<p>00/00</p>
+										<p>{{ holderName }}</p>
+										<p>{{ month }}/{{ year }} </p>
 									</div>
 								</div> 
 
@@ -43,8 +43,7 @@
 					
 					<div class="card-back-waraper">
 						<div class="card-back">
-
-							<p>000</p>
+							<p>{{ cvcNum }}</p>
 							<img src="./images/bg-card-back.png" class="card-img" alt=""> 
 						</div>
 					</div>
@@ -56,18 +55,18 @@
 
 				<div class="form">
 					<form action="#" class="form-form">
-						<div class="card-holder fields-wraper" data-error="true">
+						<div class="card-holder fields-wraper" data-error="false">
 							<label for="for-card-holder" class="field-label-gap">
 								<p>Cardholder Name</p>
 								<div class="ffinput-div">
-									<input type="text" id="for-card-holder" class="ffinput" placeholder="e.g. Jane Appleseed" aria-describedby="card-holder-error">
+									<input type="text" placeholder="e.g. Jane Appleseed" id="for-card-holder" class="ffinput"  aria-describedby="card-holder-error" v-model="holderName">
 									<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 								</div>
 							</label>
 							<p class="error" id="card-holder-error">This is error</p>
 						</div>
 
-						<div class="Card-Number fields-wraper" data-error="true">
+						<div class="Card-Number fields-wraper" data-error="false">
 							<label for="for-Card-Number" class="field-label-gap">
 								<p>Card Number</p>
 								<div class="ffinput-div">
@@ -80,7 +79,7 @@
 						</div>
 
 						<div class="mm-yy-cvc">
-							<div class="mm-yy-sec fields-wraper" data-error="true">
+							<div class="mm-yy-sec fields-wraper" data-error="false">
 								<p>Exp. Date (MM/YY)</p>
 								<div class="mm-yy-fields">
 									
@@ -101,7 +100,7 @@
 								<p class="error" id="MM-YY-error">This is error</p>
 							</div>
 
-							<div class="CVC fields-wraper" data-error="true">
+							<div class="CVC fields-wraper" data-error="false">
 								<label for="for-CVC" >
 									<p>CVC</p>
 									<div class="ffinput-div">
@@ -114,7 +113,7 @@
 
 						</div>
 
-						<button class="sub-btn">Confirm</button>
+						<button type="submit" class="sub-btn">Confirm</button>
 					</form>
 					<!-- <div class="success-message">
 						<img src="./images/icon-complete.svg" class="suces-icon" alt="">
@@ -159,95 +158,7 @@
 	Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
 	Coded by <a href="#">Your Name Here</a>.
 	</div> -->
+	<script type="module" src="./static/Vueapp/app.js"></script>
 </body>
 </html>
 
-<!-- <div class="layout">
-	<main class="main">
-		<section class="form-section">
-			<div class="cards">
-				<div class="card-front-waraper">
-					<div class="card-front">
-
-						<div class="card-front-content flex-box flex-column flex-spaced">
-							<img src="./images/card-logo.svg" class="card-front-logo" alt="">
-							
-							<div>
-								<p class="card-number">0000 0000 0000 0000</p>
-								
-								<div class="card-holder-name flex-box flex-row flex-spaced">
-									<p>Jane Appleseed</p>
-									<p>00/00</p>
-								</div>
-							</div> 
-
-						</div>
-
-						<img src="./images/bg-card-front.png" class="card-img" alt="">
-					</div>
-				</div>
-				
-				<div class="card-back-waraper">
-					<div class="card-back">
-
-						<p>000</p>
-						<img src="./images/bg-card-back.png" class="card-img" alt=""> 
-					</div>
-				</div>
-				<picture class="side-img">
-					<source media="(min-width: 69.375em)" srcset="./images/bg-main-desktop.png">
-					<img src="./images/bg-main-mobile.png" class="side-img" alt="">
-				</picture>
-			</div>
-
-			<div class="form">
-				<form action="#" class="form-form">
-					<div class="card-holder" data-error="true">
-						<label for="for-card-holder" class="field-label-gap">
-							<p>Cardholder Name</p>
-							<div class="a">
-								<input type="text" id="for-card-holder" class="t" placeholder="e.g. Jane Appleseed" aria-describedby="card-holder-error">
-								<span class="aa"></span><span class="ab"></span><span class="ac"></span>
-							</div>
-						</label>
-						<label for="for-card-holder">Cardholder Name</label>
-						<input type="text" id="for-card-holder" class="form-field-input field-label-gap " placeholder="e.g. Jane Appleseed" aria-describedby="card-holder-error">
-						<p class="error"id="card-holder-error">This is error</p>
-					</div>
-					<div class="Card-Number" data-error="true">
-						<label for="for-Card-Number">Card Number</label>
-						<input type="text" id="for-Card-Number" class="form-field-input field-label-gap " placeholder="e.g. 1234 5678 9123 0000" aria-describedby="Card-Number-error">
-						<p class="error" id="Card-Number-error">This is error</p>
-					</div>
-
-					<div class="mm-yy-cvc">
-						<div class="mm-yy-sec" data-error="true">
-							<p>Exp. Date (MM/YY)</p>
-							<div class="mm-yy-fields field-label-gap">
-								<input type="number" class="form-field-input" placeholder="MM" aria-describedby="MM-YY-error">
-								<input type="number" class="form-field-input" placeholder="YY" aria-describedby="MM-YY-error">
-							</div>
-							<p class="error" id="MM-YY-error">This is error</p>
-						</div>
-
-						<div class="CVC" data-error="true">
-							<label for="for-CVC">CVC</label>
-							<input type="text" id="for-Card-Number" class="form-field-input field-label-gap " placeholder="e.g. 123" aria-describedby="CVC-error">
-							<p class="error" id="CVC-error">This is error</p>
-						</div>
-
-					</div>
-
-					<button class="sub-btn">Confirm</button>
-				</form>
-				<div class="success-message">
-					<img src="./images/icon-complete.svg" class="suces-icon" alt="">
-					<p class="suces-msg-prim">Thank you!</p>
-					<p class="suces-msg-sec">We've added your card details</p>
-					<button class="cont-btn">Continue</button>
-				</div>
-			</div>
-		</section>
-	</main>
-	 <footer class="footer"></footer>
-</div> -->

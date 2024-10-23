@@ -2,20 +2,19 @@
     display: none;
 }
 
-.fields-wraper[data-error=false] > .error {
-    display: block;
-    color: var(--clr-prim-1);
-    font-size: 14px;
-}
-
-/* .form-field-input {
-    border-color: linear-gradient(to right, red , yellow);
-} */
-
 .ffinput-aa, .ffinput-ac { transition: 0.5s; }
 .ffinput-div:hover > .ffinput-aa, .ffinput:focus ~ .ffinput-aa {
     opacity: 0;
 }
 .ffinput-div:hover > .ffinput-ac, .ffinput:focus ~ .ffinput-ac {
     opacity: 1;
+}
+
+.fields-wraper[data-error=true] > .error {
+    display: block;
+    color: var(--clr-prim-1);
+    font-size: 14px;
+}
+.fields-wraper[data-error=true] .ffinput-aa {
+    background-color: var(--clr-prim-1);
 }

@@ -208,6 +208,15 @@ border-radius: 10px;
     outline: 0;
 }
 
+.ffinput::placeholder {
+    /* color: var(--clr-nuet-1); */
+    color: var(--clr-nuet-3);
+    /* color: red; */
+    opacity: 1; /* Firefox */
+}
+.ffinput::-ms-input-placeholder {
+    color: var(--clr-nuet-3);
+}
 
 
 @media only screen and (min-width: 69.375em ) /* min-width:  1110px */ {
