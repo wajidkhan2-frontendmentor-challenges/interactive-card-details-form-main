@@ -27,7 +27,7 @@
 								<img src="./images/card-logo.svg" class="card-front-logo" alt="">
 								
 								<div>
-									<p class="card-number"> {{ cardNumber }} </p>
+									<p class="card-number"> {{ cardNumberS }} </p>
 									
 									<div class="card-holder-name flex-box flex-row flex-spaced">
 										<p>{{ holderName }}</p>
@@ -54,28 +54,31 @@
 				</div>
 
 				<div class="form">
-					<form action="#" class="form-form">
-						<div class="card-holder fields-wraper" data-error="false">
+					<form action="#" class="form-form" v-on:submit="onFSubmite">
+						<div class="card-holder fields-wraper" v-bind:data-error="holderNameError">
 							<label for="for-card-holder" class="field-label-gap">
 								<p>Cardholder Name</p>
 								<div class="ffinput-div">
-									<input type="text" placeholder="e.g. Jane Appleseed" id="for-card-holder" class="ffinput"  aria-describedby="card-holder-error" v-model="holderName">
+									<input type="text" placeholder="e.g. Jane Appleseed" id="for-card-holder" 
+									class="ffinput"  aria-describedby="card-holder-error" aria-invalid="false"
+									v-model="holderName">
 									<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 								</div>
 							</label>
-							<p class="error" id="card-holder-error">This is error</p>
+							<p class="error" id="card-holder-error" aria-live="polite">{{ holderNameErrorMsgD }}</p>
 						</div>
 
-						<div class="Card-Number fields-wraper" data-error="false">
+						<div class="Card-Number fields-wraper" v-bind:data-error="cardNumberError">
 							<label for="for-Card-Number" class="field-label-gap">
 								<p>Card Number</p>
 								<div class="ffinput-div">
 									<input type="text" id="for-Card-Number" class="ffinput" 
-									placeholder="e.g. 1234 5678 9123 0000" aria-describedby="Card-Number-error">
+									placeholder="e.g. 1234 5678 9123 0000" aria-describedby="Card-Number-error"
+									v-on:input="cardNumberInput">
 									<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 								</div>
 							</label>
-							<p class="error" id="Card-Number-error">This is error</p>
+							<p class="error" id="Card-Number-error">{{ cardNumberErrorMsgD }}</p>
 						</div>
 
 						<div class="mm-yy-cvc">

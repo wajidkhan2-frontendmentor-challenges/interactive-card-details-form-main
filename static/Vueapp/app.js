@@ -3,11 +3,24 @@ import { createApp } from './vue@3/vue.esm-browser.js'
 createApp({
     data() {
         return {
-            cardNumber: "9591 6489 6389 101E",
             holderName: "Jane Appleseed",
+            holderNameError: false,
+            holderNameErrorMsgD: "", 
+
+            // cardNumber: "959164896389101E",
+            // cardNumberS: "9591 6489 6389 101E",
+            cardNumber: "959164896389101E",
+            cardNumberS: "9591 6489 6389 101E",
+            cardNumberError: false,
+            cardNumberErrorMsgD: "",
+            
+
             cvcNum: "123",
             month: "03",
             year: "24",
+
+            errorMsgBlank: "Can't be blank",
+            errorMsgMoreCharacter: "The character are more then 16"
         }
     },
     created() {
@@ -17,8 +30,44 @@ createApp({
 
     },
     methods: {
-        todo() {
-            // pass
+        onFSubmite(E) {
+            E.preventDefault();
+
+            if (this.holderName == ""){
+                this.holderNameErrorMsgD = this.errorMsgBlank;
+                this.holderNameError = true;
+            }
+        },
+
+        cardNumberInput(E){
+            let value = E.target.value
+            // this.cardNumber = value;
+            this.cardNumber = value;
+            let value_length = value.length;
+            let spaces = parseInt(value_length / 4);
+            console.log(value_length, spaces);
+
+            this.cardNumberError = false;
+            if ( value_length <= 16 ){
+                this.cardNumberS = '';
+                let j = 0;
+                for (let i = 0; i < value_length; i++)
+                {
+                    if ( j == 4 ){
+                        this.cardNumberS += " "
+                        this.cardNumberS += this.cardNumber[i];
+                        j = 0;
+                    } else {
+                        this.cardNumberS += this.cardNumber[i];
+                    }
+                    j++;
+                    // this.cardNumberS = this.cardNumber;
+                }
+            } else {
+                this.cardNumberError = true;
+                this.cardNumberErrorMsgD = this.errorMsgMoreCharacter
+            }
+
         }
     },
 
