@@ -14,35 +14,25 @@ createApp({
             cardNumberError: false,
             cardNumberErrorMsgD: "",
             
-
             cvcNum: "123",
-            month: "03",
-            year: "24",
+
+            month: null,
+            monthS: "03",
+            year: null,
+            yearS: "24",
+            monthYearError: false,
+            monthYearErrorMsgD: "",
 
             errorMsgBlank: "Can't be blank",
-            errorMsgMoreCharacter: "The character are more then 16"
+            errorMsgMoreCharacter: "Can't be more then 16 characters"
         }
     },
-    created() {
-        let todo = 'todo';
-    },
-    computed: {
 
-    },
-    methods: {
-        onFSubmite(E) {
-            E.preventDefault();
+    watch: {
+        cardNumber() {
 
-            if (this.holderName == ""){
-                this.holderNameErrorMsgD = this.errorMsgBlank;
-                this.holderNameError = true;
-            }
-        },
-
-        cardNumberInput(E){
-            let value = E.target.value
+            let value = this.cardNumber;
             // this.cardNumber = value;
-            this.cardNumber = value;
             let value_length = value.length;
             let spaces = parseInt(value_length / 4);
             console.log(value_length, spaces);
@@ -65,9 +55,100 @@ createApp({
                 }
             } else {
                 this.cardNumberError = true;
-                this.cardNumberErrorMsgD = this.errorMsgMoreCharacter
+                this.cardNumberErrorMsgD = this.errorMsgMoreCharacter;
             }
+        },
 
+        month() {
+            this.monthYearError = false;
+
+            console.log(typeof this.month)
+
+            if (this.month > 0 && this.month <= 12)
+            {
+                if (this.month < 10 && this.month > 0)
+                {
+                    this.monthS = "0";
+                    this.monthS += this.month;
+                } else { 
+                    this.monthS = this.month;
+                }
+                console.log("car")
+                // if (this.month == "" && this.month == 0)
+                // {
+                //     this.monthS = "00";
+                // }
+            } else if (this.month == "" && typeof this.month == "string") {
+                this.monthS = "00";
+                this.monthYearError = false;
+                console.log("bike")
+            } else {
+                this.monthYearError = true;
+                this.monthYearErrorMsgD = "invalid month";
+                console.log("truck")
+            }
+        },
+
+        year() {
+            if (this.year == "" && this.year == "string")
+            {
+                this.yearS = "00";
+            }
+        }
+    },
+
+    created() {
+        let todo = 'todo';
+    },
+    computed: {
+
+    },
+    methods: {
+        onFSubmite(E) {
+            E.preventDefault();
+
+            if (this.holderName == ""){
+                this.holderNameErrorMsgD = this.errorMsgBlank;
+                this.holderNameError = true;
+            }
+        },
+
+        // cardNumberInput(E){
+        //     let value = E.target.value
+        //     // this.cardNumber = value;
+        //     this.cardNumber = value;
+        //     let value_length = value.length;
+        //     let spaces = parseInt(value_length / 4);
+        //     console.log(value_length, spaces);
+
+        //     this.cardNumberError = false;
+        //     if ( value_length <= 16 ){
+        //         this.cardNumberS = '';
+        //         let j = 0;
+        //         for (let i = 0; i < value_length; i++)
+        //         {
+        //             if ( j == 4 ){
+        //                 this.cardNumberS += " "
+        //                 this.cardNumberS += this.cardNumber[i];
+        //                 j = 0;
+        //             } else {
+        //                 this.cardNumberS += this.cardNumber[i];
+        //             }
+        //             j++;
+        //             // this.cardNumberS = this.cardNumber;
+        //         }
+        //     } else {
+        //         this.cardNumberError = true;
+        //         this.cardNumberErrorMsgD = this.errorMsgMoreCharacter
+        //     }
+
+        // }
+
+        fancyNumber(Num) {
+            var str = "" + Num
+            var pad = "00"
+            var ans = pad.substring(0, pad.length - str.length) + str
+            return ans;
         }
     },
 

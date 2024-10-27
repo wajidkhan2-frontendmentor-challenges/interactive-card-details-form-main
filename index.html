@@ -31,7 +31,7 @@
 									
 									<div class="card-holder-name flex-box flex-row flex-spaced">
 										<p>{{ holderName }}</p>
-										<p>{{ month }}/{{ year }} </p>
+										<p>{{ monthS }}/{{ yearS }} </p>
 									</div>
 								</div> 
 
@@ -74,7 +74,8 @@
 								<div class="ffinput-div">
 									<input type="text" id="for-Card-Number" class="ffinput" 
 									placeholder="e.g. 1234 5678 9123 0000" aria-describedby="Card-Number-error"
-									v-on:input="cardNumberInput">
+									v-model="cardNumber">
+									<!-- v-on:input="cardNumberInput"> -->
 									<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 								</div>
 							</label>
@@ -82,25 +83,24 @@
 						</div>
 
 						<div class="mm-yy-cvc">
-							<div class="mm-yy-sec fields-wraper" data-error="false">
+							<div class="mm-yy-sec fields-wraper" v-bind:data-error="monthYearError">
 								<p>Exp. Date (MM/YY)</p>
 								<div class="mm-yy-fields">
-									
 									<label for="t-mm" >
 										<div class="ffinput-div">
-											<input type="number" class="ffinput" id="t-mm" placeholder="MM" aria-describedby="MM-YY-error">
+											<input type="number" class="ffinput" id="t-mm" placeholder="MM" aria-describedby="MM-YY-error" v-model="month">
 											<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 										</div>
 									</label>
 									<label for="t-yy" >
 										<div class="ffinput-div">
-											<input type="number" class="ffinput" id="t-yy" placeholder="YY" aria-describedby="MM-YY-error">
+											<input type="number" class="ffinput" id="t-yy" placeholder="YY" aria-describedby="MM-YY-error" v-model="year">
 											<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 										</div>
 									</label>
 
 								</div>
-								<p class="error" id="MM-YY-error">This is error</p>
+								<p class="error" id="MM-YY-error">{{ monthYearErrorMsgD }}</p>
 							</div>
 
 							<div class="CVC fields-wraper" data-error="false">
