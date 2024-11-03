@@ -107,7 +107,8 @@
 								<label for="for-CVC" >
 									<p>CVC</p>
 									<div class="ffinput-div">
-										<input type="text" id="for-CVC" class="ffinput" placeholder="e.g. 123" aria-describedby="CVC-error">
+										<input type="number" id="for-CVC" class="ffinput" placeholder="e.g. 123" aria-describedby="CVC-error"
+										v-model="cvcNum">
 										<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 									</div>
 								</label>

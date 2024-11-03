@@ -3,23 +3,23 @@ import { createApp } from './vue@3/vue.esm-browser.js'
 createApp({
     data() {
         return {
-            holderName: "Jane Appleseed",
+            holderName: "",
             holderNameError: false,
             holderNameErrorMsgD: "", 
 
+            cardNumber: "",
+            cardNumberS: "0000 0000 0000 0000",
             // cardNumber: "959164896389101E",
             // cardNumberS: "9591 6489 6389 101E",
-            cardNumber: "959164896389101E",
-            cardNumberS: "9591 6489 6389 101E",
             cardNumberError: false,
             cardNumberErrorMsgD: "",
             
-            cvcNum: "123",
+            cvcNum: "000",
 
-            month: null,
-            monthS: "03",
-            year: null,
-            yearS: "24",
+            month: "",
+            monthS: "00",
+            year: "",
+            yearS: "00",
             monthYearError: false,
             monthYearErrorMsgD: "",
 
@@ -38,7 +38,7 @@ createApp({
             console.log(value_length, spaces);
 
             this.cardNumberError = false;
-            if ( value_length <= 16 ){
+            if ( value_length > 0 && value_length <= 16 ){
                 this.cardNumberS = '';
                 let j = 0;
                 for (let i = 0; i < value_length; i++)
@@ -54,47 +54,49 @@ createApp({
                     // this.cardNumberS = this.cardNumber;
                 }
             } else {
+                this.cardNumberS = "0000 0000 0000 0000";
                 this.cardNumberError = true;
                 this.cardNumberErrorMsgD = this.errorMsgMoreCharacter;
             }
         },
+        month() { this.checkMonthYear(); },
+        year() { this.checkMonthYear(); }
+        // month() {
+        //     this.monthYearError = false;
 
-        month() {
-            this.monthYearError = false;
+        //     console.log(typeof this.month)
 
-            console.log(typeof this.month)
+        //     if (this.month > 0 && this.month <= 12)
+        //     {
+        //         if (this.month < 10 && this.month > 0)
+        //         {
+        //             this.monthS = "0";
+        //             this.monthS += this.month;
+        //         } else { 
+        //             this.monthS = this.month;
+        //         }
+        //         console.log("car")
+        //         // if (this.month == "" && this.month == 0)
+        //         // {
+        //         //     this.monthS = "00";
+        //         // }
+        //     } else if (this.month == "" && typeof this.month == "string") {
+        //         this.monthS = "00";
+        //         this.monthYearError = false;
+        //         console.log("bike")
+        //     } else {
+        //         this.monthYearError = true;
+        //         this.monthYearErrorMsgD = "invalid month";
+        //         console.log("truck")
+        //     }
+        // },
 
-            if (this.month > 0 && this.month <= 12)
-            {
-                if (this.month < 10 && this.month > 0)
-                {
-                    this.monthS = "0";
-                    this.monthS += this.month;
-                } else { 
-                    this.monthS = this.month;
-                }
-                console.log("car")
-                // if (this.month == "" && this.month == 0)
-                // {
-                //     this.monthS = "00";
-                // }
-            } else if (this.month == "" && typeof this.month == "string") {
-                this.monthS = "00";
-                this.monthYearError = false;
-                console.log("bike")
-            } else {
-                this.monthYearError = true;
-                this.monthYearErrorMsgD = "invalid month";
-                console.log("truck")
-            }
-        },
-
-        year() {
-            if (this.year == "" && this.year == "string")
-            {
-                this.yearS = "00";
-            }
-        }
+        // year() {
+        //     if (this.year == "" && this.year == "string")
+        //     {
+        //         this.yearS = "00";
+        //     }
+        // }
     },
 
     created() {
@@ -113,43 +115,55 @@ createApp({
             }
         },
 
-        // cardNumberInput(E){
-        //     let value = E.target.value
-        //     // this.cardNumber = value;
-        //     this.cardNumber = value;
-        //     let value_length = value.length;
-        //     let spaces = parseInt(value_length / 4);
-        //     console.log(value_length, spaces);
-
-        //     this.cardNumberError = false;
-        //     if ( value_length <= 16 ){
-        //         this.cardNumberS = '';
-        //         let j = 0;
-        //         for (let i = 0; i < value_length; i++)
-        //         {
-        //             if ( j == 4 ){
-        //                 this.cardNumberS += " "
-        //                 this.cardNumberS += this.cardNumber[i];
-        //                 j = 0;
-        //             } else {
-        //                 this.cardNumberS += this.cardNumber[i];
-        //             }
-        //             j++;
-        //             // this.cardNumberS = this.cardNumber;
-        //         }
-        //     } else {
-        //         this.cardNumberError = true;
-        //         this.cardNumberErrorMsgD = this.errorMsgMoreCharacter
-        //     }
-
-        // }
-
         fancyNumber(Num) {
             var str = "" + Num
             var pad = "00"
             var ans = pad.substring(0, pad.length - str.length) + str
             return ans;
-        }
+        },
+
+        checkMonthYear() {
+            this.monthYearError = false
+
+            let monthEmpty = false;
+            let monthInvalid = false;
+            if (this.month == "" && typeof this.month == "string"){
+                monthEmpty = true;
+                this.monthS = "00";
+            } else if ( this.month < 1 || this.month > 12 ) {
+                monthInvalid = true;
+            }
+            
+            if (monthInvalid == true) {
+                this.monthYearError = true;
+                this.monthYearErrorMsgD = "invalid month";
+            } else {
+                this.monthS = this.fancyNumber(this.month) 
+                console.log(this.fancyNumber(this.month), this.monthS)
+            }
+
+            let yearEmpty = false;
+            let yearInvalid = false;
+            if (this.year == "" && typeof this.year == "string"){
+                yearEmpty = true;
+                this.yearS = "00";
+            } else if (this.year < 1 || this.year > 99) {
+                yearInvalid = true;
+            }
+
+            if (yearInvalid == true) {
+                this.monthYearError = true;
+                this.monthYearErrorMsgD = "invalid year";
+            } else {
+                this.yearS = this.fancyNumber(this.year);
+            }
+
+            if (monthInvalid == true && yearInvalid == true)
+            {
+                this.monthYearError = true;
+                this.monthYearErrorMsgD = "invalid month and year";
+            }
+        },
     },
 
     mounted() {
