@@ -30,7 +30,7 @@
 									<p class="card-number"> {{ cardNumberS }} </p>
 									
 									<div class="card-holder-name flex-box flex-row flex-spaced">
-										<p>{{ holderName }}</p>
+										<p>{{ holderNameS }}</p>
 										<p>{{ monthS }}/{{ yearS }} </p>
 									</div>
 								</div> 
@@ -43,7 +43,7 @@
 					
 					<div class="card-back-waraper">
 						<div class="card-back">
-							<p>{{ cvcNum }}</p>
+							<p>{{ cvcNumS }}</p>
 							<img src="./images/bg-card-back.png" class="card-img" alt=""> 
 						</div>
 					</div>
@@ -54,7 +54,7 @@
 				</div>
 
 				<div class="form">
-					<form action="#" class="form-form" v-on:submit="onFSubmite">
+					<form action="#" class="form-form" v-if="successMessage == false" v-on:submit="onFSubmite">
 						<div class="card-holder fields-wraper" v-bind:data-error="holderNameError">
 							<label for="for-card-holder" class="field-label-gap">
 								<p>Cardholder Name</p>
@@ -103,7 +103,7 @@
 								<p class="error" id="MM-YY-error">{{ monthYearErrorMsgD }}</p>
 							</div>
 
-							<div class="CVC fields-wraper" data-error="false">
+							<div class="CVC fields-wraper" v-bind:data-error="cvcNumError">
 								<label for="for-CVC" >
 									<p>CVC</p>
 									<div class="ffinput-div">
@@ -112,19 +112,19 @@
 										<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 									</div>
 								</label>
-								<p class="error" id="CVC-error">This is error</p>
+								<p class="error" id="CVC-error">{{ cvcNumErrorMsgD }}</p>
 							</div>
 
 						</div>
 
 						<button type="submit" class="sub-btn">Confirm</button>
 					</form>
-					<!-- <div class="success-message">
+					<div class="success-message" v-else>
 						<img src="./images/icon-complete.svg" class="suces-icon" alt="">
 						<p class="suces-msg-prim">Thank you!</p>
 						<p class="suces-msg-sec">We've added your card details</p>
-						<button class="cont-btn">Continue</button>
-					</div> -->
+						<button class="cont-btn" v-on:click="onContinue">Continue</button>
+					</div>
 				</div>
 			</section>
 		</main>
