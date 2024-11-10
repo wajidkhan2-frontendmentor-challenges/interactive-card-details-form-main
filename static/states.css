@@ -10,11 +10,13 @@
     opacity: 1;
 }
 
-.fields-wraper[data-error=true] > .error {
+.fields-wraper[data-error=true] > .error, 
+.fields-time-wraper[data-error=true] > .error {
     display: block;
     color: var(--clr-prim-1);
     font-size: 14px;
 }
-.fields-wraper[data-error=true] .ffinput-aa {
+.fields-wraper[data-error=true] .ffinput-aa, 
+.warning[data-error=true] .ffinput-aa {
     background-color: var(--clr-prim-1);
 }
