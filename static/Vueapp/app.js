@@ -46,9 +46,11 @@ createApp({
     watch: {
         'holderName.inputText'() {
             this.holderName.inputError = false;
+            this.holderName.inputTextS = "";
             if (this.holderName.inputText == "")
             {
                 this.holderName.inputError = false;
+                this.holderName.inputTextS = "Holder Name";
             } else {
                 this.holderName.inputTextS = this.holderName.inputText
             }
@@ -58,19 +60,40 @@ createApp({
             let str = this.cardNumber.inputText;
             let strlength = str.length;
             let splitOn = 4;
-            let splitss = parseInt(strlength / splitOn);
+            let spacedon = 0
 
-            let jump = 0;
-            console.log(splitss)
+            console.log(strlength)
             this.cardNumber.inputTextS = "";
-            for (let i = 0; i < splitss; i++)
-            {
-                console.log(str.substring(jump , jump + splitOn), `(${i})`);
-                this.cardNumber.inputTextS += str.substring(jump , jump + splitOn);
-                this.cardNumber.inputTextS += " ";
-                jump += splitOn;
+            this.cardNumber.inputError = false;
+            if (str.split(" ").length > 1) { 
+                this.cardNumber.inputError = true;
+                this.cardNumber.inputTextS = "0000 0000 0000 0000"
+                this.cardNumber.inputErrorMsgD = "Wrong formate, Number only"
+            } else if (strlength > 0 && strlength <= 16) {
+                for (let i = 0; i < strlength; i++)
+                {
+                    this.cardNumber.inputTextS += this.cardNumber.inputText[i];
+                    spacedon++
+                    if (spacedon == splitOn) {
+                        this.cardNumber.inputTextS += " "
+                        spacedon = 0;
+                    }
+                }
+            } else if (str == "") {
+                this.cardNumber.inputError = false;
+                this.cardNumber.inputTextS = "0000 0000 0000 0000";
+                this.cardNumber.inputErrorMsgD = ""
+            } else {
+                this.cardNumber.inputError = true;
+                this.cardNumber.inputTextS = "0000 0000 0000 0000"
+                this.cardNumber.inputErrorMsgD = "value must be 16 characters"
             }
-        }
+            
+        },
+
+        'date.month.inputText'() { this.checkMonthYear(); },
+        'date.year.inputText'() { this.checkMonthYear(); }
+
     },
 
     created() {
@@ -91,14 +114,67 @@ createApp({
 
             let errorCount = 0;
 
-            this.holderName.inputError = false;
+            
             if (this.holderName.inputText == "")
             {
                 this.holderName.inputError = true;
                 this.holderName.inputErrorMsgD = "Can't be blank";
                 errorCount++
+            } else { this.holderName.inputError = false; }
+
+            if (this.cardNumber.inputText == "") {
+                this.cardNumber.inputError = true;
+                this.cardNumber.inputTextS = "0000 0000 0000 0000"
+                this.cardNumber.inputErrorMsgD = "Can't be blank"
+                errorCount++
+            } else if (this.cardNumber.inputError == true) {
+                errorCount++
+            } else { this.cardNumber.inputError = false; }
+
+            if (errorCount == 0) {
+                this.successMessage = true;
             }
-        }
+        },
+
+        checkMonthYear() {
+            this.date.inputErrorMsgD = "";
+            let bothError = 0;
+            
+            this.date.month.inputError = false;
+            if (this.date.month.inputText == "" && 
+            typeof  this.date.month.inputText == "string") {
+                this.date.month.inputTextS = "00";
+                this.date.month.inputError = false;
+                console.log("yes")
+            } else if (this.date.month.inputText < 1 || this.date.month.inputText > 12) {
+                this.date.month.inputTextS = "00";
+                this.date.month.inputError = true;
+                this.date.inputErrorMsgD = "Invalid Month";
+                bothError++;
+            } else { this.date.month.inputTextS = this.fancyNumber(this.date.month.inputText); }
+
+            this.date.year.inputError = false;
+            if (this.date.year.inputText == "" && 
+            typeof  this.date.year.inputText == "string") {
+                this.date.year.inputTextS = "00";
+                this.date.year.inputError = false;
+                console.log("yes")
+            } else if (this.date.year.inputText < 1 || this.date.year.inputText > 99) {
+                this.date.year.inputTextS = "00";
+                this.date.year.inputError = true;
+                this.date.inputErrorMsgD = "Invalid Year";
+                bothError++;
+            } else { this.date.year.inputTextS = this.fancyNumber(this.date.year.inputText); }
+            
+            if (bothError == 2) { this.date.inputErrorMsgD = "Invalid Month and Year"; }
+        },
+
+        fancyNumber(Num) {
+            var str = "" + Num;
+            var pad = "00";
+            var ans = pad.substring(0, pad.length - str.length) + str;
+            return ans;
+        },
     },
 
     mounted() {
