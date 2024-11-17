@@ -5,6 +5,7 @@ createApp({
         return {
             successMessage: false,
             holderName: {
+                reef: "holderNameInput",
                 inputText: "",
                 inputTextS: "Holder Name",
                 inputError: false,
@@ -12,34 +13,40 @@ createApp({
             },
 
             cardNumber: {
+                reef: "cardNumberInput",
                 inputText: "",
                 inputTextS: "0000 0000 0000 0000",
                 inputError: false,
                 inputErrorMsgD: "awdaw"
             },
 
-            cvcNum: {
-                inputText: "",
-                inputTextS: "000",
-                inputError: false,
-                inputErrorMsgD: "adwad"
-            },
-
             date: {
+                focused: "",
+
                 month: {
+                    reef: "monthInput",
                     inputText: "",
                     inputTextS: "00",
                     inputError: false,
                 },
 
                 year: {
+                    reef: "yearInput",
                     inputText: "",
                     inputTextS: "00",
                     inputError: false,
                 },
 
-                inputErrorMsgD: "adawdawdawd"
-            }
+                inputErrorMsgD: ""
+            },
+
+            cvcNum: {
+                reef: "cvcNumInput",
+                inputText: "",
+                inputTextS: "000",
+                inputError: false,
+                inputErrorMsgD: "adwad"
+            },
         }
     },
 
@@ -47,8 +54,7 @@ createApp({
         'holderName.inputText'() {
             this.holderName.inputError = false;
             this.holderName.inputTextS = "";
-            if (this.holderName.inputText == "")
-            {
+            if (this.holderName.inputText == "") {
                 this.holderName.inputError = false;
                 this.holderName.inputTextS = "Holder Name";
             } else {
@@ -67,8 +73,9 @@ createApp({
             this.cardNumber.inputError = false;
             if (str.split(" ").length > 1) { 
                 this.cardNumber.inputError = true;
-                this.cardNumber.inputTextS = "0000 0000 0000 0000"
-                this.cardNumber.inputErrorMsgD = "Wrong formate, Number only"
+                this.cardNumber.inputTextS = "0000 0000 0000 0000";
+                this.cardNumber.inputErrorMsgD = "Wrong formate, Number only";
+                this.$refs[this.cardNumber.reef].focus();
             } else if (strlength > 0 && strlength <= 16) {
                 for (let i = 0; i < strlength; i++)
                 {
@@ -85,21 +92,33 @@ createApp({
                 this.cardNumber.inputErrorMsgD = ""
             } else {
                 this.cardNumber.inputError = true;
-                this.cardNumber.inputTextS = "0000 0000 0000 0000"
-                this.cardNumber.inputErrorMsgD = "value must be 16 characters"
+                this.cardNumber.inputTextS = "0000 0000 0000 0000";
+                this.cardNumber.inputErrorMsgD = "value must be 16 characters";
+                this.$refs[this.cardNumber.reef].focus();
             }
             
         },
 
         'date.month.inputText'() { this.checkMonthYear(); },
-        'date.year.inputText'() { this.checkMonthYear(); }
+        'date.year.inputText'() { this.checkMonthYear(); },
+
+        'cvcNum.inputText'() { 
+            this.cvcNum.inputError = false;
+            this.cvcNum.inputTextS = "";
+            if (this.cvcNum.inputText == "") {
+                this.cvcNum.inputError = false;
+                this.cvcNum.inputTextS = "000";
+            } else {
+                this.cvcNum.inputTextS = this.cvcNum.inputText;
+            }
+        }
 
     },
 
     created() {
-        let todo = 'todo';
+        // pass
     },
-    computed: {
+    computed: { 
         dateError(){
             if (this.date.month.inputError == false && this.date.year.inputError == false) {
                 return false
@@ -111,28 +130,77 @@ createApp({
     methods: {
         onFSubmite(E) {
             E.preventDefault();
-
             let errorCount = 0;
+            let errorInputs = [];
 
-            
-            if (this.holderName.inputText == "")
-            {
+            if (this.holderName.inputText == "") {
                 this.holderName.inputError = true;
                 this.holderName.inputErrorMsgD = "Can't be blank";
-                errorCount++
+                errorInputs.push(this.holderName.reef);
+                errorCount++;
             } else { this.holderName.inputError = false; }
 
             if (this.cardNumber.inputText == "") {
                 this.cardNumber.inputError = true;
-                this.cardNumber.inputTextS = "0000 0000 0000 0000"
-                this.cardNumber.inputErrorMsgD = "Can't be blank"
-                errorCount++
+                this.cardNumber.inputTextS = "0000 0000 0000 0000";
+                this.cardNumber.inputErrorMsgD = "Can't be blank";
+                errorInputs.push(this.cardNumber.reef);
+                errorCount++;
             } else if (this.cardNumber.inputError == true) {
-                errorCount++
+                errorInputs.push(this.cardNumber.reef);
+                errorCount++;
             } else { this.cardNumber.inputError = false; }
+
+
+            if (this.date.month.inputText == "" && 
+            typeof  this.date.month.inputText == "string") {
+                this.date.month.inputTextS = "00";
+                this.date.month.inputError = true;
+                this.date.inputErrorMsgD = "Month Can't be Blank";
+                errorInputs.push(this.date.month.reef);
+                errorCount++; 
+            } else if (this.date.month.inputError == true) {
+                this.date.month.inputTextS = "00";
+                this.date.month.inputError = true;
+                this.date.inputErrorMsgD = "Invalid Month";
+                errorInputs.push(this.date.month.reef);
+                errorCount++;
+            }
+
+            if (this.date.year.inputText == "" && 
+            typeof  this.date.year.inputText == "string") {
+                this.date.year.inputTextS = "00";
+                this.date.year.inputError = true;
+                this.date.inputErrorMsgD = "Year Can't be Blank";
+                errorInputs.push(this.date.year.reef);
+                errorCount++;
+            } else if (this.date.year.inputError == true) {
+                this.date.year.inputTextS = "00";
+                this.date.year.inputError = true;
+                this.date.inputErrorMsgD = "Invalid Year";
+                errorInputs.push(this.date.year.reef);
+                errorCount++;
+            }
+
+            if ( (this.date.month.inputText == "" && 
+            typeof  this.date.month.inputText == "string") && 
+            (this.date.year.inputText == "" && 
+            typeof  this.date.year.inputText == "string") ) {
+                this.date.inputErrorMsgD = "Year and Month Can't be Blank";
+            }
+            
+            if (this.cvcNum.inputText == ""){
+                this.cvcNum.inputError = true;
+                this.cvcNum.inputErrorMsgD = "Can't be Blank";
+                errorInputs.push(this.cvcNum.reef);
+                errorCount++;
+            }
 
             if (errorCount == 0) {
                 this.successMessage = true;
+            } else {
+                this.$refs[errorInputs[0]].focus();
+                console.log(errorInputs)
             }
         },
 
@@ -150,6 +218,7 @@ createApp({
                 this.date.month.inputTextS = "00";
                 this.date.month.inputError = true;
                 this.date.inputErrorMsgD = "Invalid Month";
+                // this.$refs[this.date.month.reef].focus();
                 bothError++;
             } else { this.date.month.inputTextS = this.fancyNumber(this.date.month.inputText); }
 
@@ -163,8 +232,11 @@ createApp({
                 this.date.year.inputTextS = "00";
                 this.date.year.inputError = true;
                 this.date.inputErrorMsgD = "Invalid Year";
+                // this.$refs[this.date.year.reef].focus();
                 bothError++;
             } else { this.date.year.inputTextS = this.fancyNumber(this.date.year.inputText); }
+            
+            if (this.date.focused != "") { this.$refs[this.date.focused].focus(); }
             
             if (bothError == 2) { this.date.inputErrorMsgD = "Invalid Month and Year"; }
         },
@@ -175,10 +247,27 @@ createApp({
             var ans = pad.substring(0, pad.length - str.length) + str;
             return ans;
         },
+
+        // check() {
+        //     // cardNumber: {
+        //     //     inputText: "",
+        //     //     inputTextS: "0000 0000 0000 0000",
+        //     //     inputError: false,
+        //     //     inputErrorMsgD: "awdaw"
+        //     // },
+
+        //     this.cardNumber.inputErrorMsgD = "Invalid Month and Year";
+        //     this.cardNumber.inputError = true;
+        //     const input = this.$refs.CardNumberInput;
+        //     input.focus();
+        // }
+
+        
     },
 
     mounted() {
         // todo    
+        console.log(this.$refs[this.date.month.reef])
     }
 
 }).mount('#app')

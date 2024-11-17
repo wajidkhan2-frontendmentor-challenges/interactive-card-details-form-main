@@ -61,7 +61,7 @@
 								<div class="ffinput-div">
 									<input type="text" placeholder="e.g. Jane Appleseed" id="for-card-holder" 
 									class="ffinput"  aria-describedby="card-holder-error" aria-invalid="false"
-									v-model="holderName.inputText">
+									v-bind:ref="holderName.reef" v-model="holderName.inputText">
 									<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 								</div>
 							</label>
@@ -72,14 +72,15 @@
 							<label for="for-Card-Number" class="field-label-gap">
 								<p>Card Number</p>
 								<div class="ffinput-div">
-									<input type="text" id="for-Card-Number" class="ffinput" 
-									placeholder="e.g. 1234 5678 9123 0000" aria-describedby="Card-Number-error"
-									v-model="cardNumber.inputText">
+									<!-- placeholder="e.g. 1234 5678 9123 0000" -->
+									<input type="text"  id="for-Card-Number" 
+									class="ffinput"  aria-describedby="Card-Number-error" aria-invalid="false"
+									v-bind:ref="cardNumber.reef" v-model="cardNumber.inputText">
 									<!-- v-on:input="cardNumberInput"> -->
 									<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 								</div>
 							</label>
-							<p class="error" id="Card-Number-error">{{ cardNumber.inputErrorMsgD }}</p>
+							<p class="error" id="Card-Number-error" aria-live="polite">{{ cardNumber.inputErrorMsgD }}</p>
 						</div>
 
 						<div class="mm-yy-cvc">
@@ -88,63 +89,49 @@
 								<div class="mm-yy-fields">
 									<label for="t-mm" class="warning" v-bind:data-error="date.month.inputError">
 										<div class="ffinput-div">
-											<input type="number" class="ffinput" id="t-mm" placeholder="MM" aria-describedby="MM-YY-error" v-model="date.month.inputText">
+											<input type="number" class="ffinput" id="t-mm" placeholder="MM" aria-describedby="MM-YY-error" 
+											v-bind:ref="date.month.reef" v-on:focus="date.focused = date.month.reef" v-model="date.month.inputText">
 											<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 										</div>
 									</label>
 									<label for="t-yy" class="warning" v-bind:data-error="date.year.inputError">
 										<div class="ffinput-div">
-											<input type="number" class="ffinput" id="t-yy" placeholder="YY" aria-describedby="MM-YY-error" v-model="date.year.inputText">
+											<input type="number" class="ffinput" id="t-yy" placeholder="YY" aria-describedby="MM-YY-error" 
+											v-bind:ref="date.year.reef" v-on:focus="date.focused = date.year.reef" v-model="date.year.inputText">
 											<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 										</div>
 									</label>
 								</div>
-								<p class="error" id="MM-YY-error">{{ date.inputErrorMsgD }}</p>
+								<p class="error" id="MM-YY-error" aria-live="polite">{{ date.inputErrorMsgD }}</p>
 							</div>
-
-							<!-- <div class="mm-yy-sec fields-wraper" v-bind:data-error="monthYearError">
-								<p>Exp. Date (MM/YY)</p>
-								<div class="mm-yy-fields">
-									<label for="t-mm" >
-										<div class="ffinput-div">
-											<input type="number" class="ffinput" id="t-mm" placeholder="MM" aria-describedby="MM-YY-error" v-model="month">
-											<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
-										</div>
-									</label>
-									<label for="t-yy" >
-										<div class="ffinput-div">
-											<input type="number" class="ffinput" id="t-yy" placeholder="YY" aria-describedby="MM-YY-error" v-model="year">
-											<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
-										</div>
-									</label>
-								</div>
-								<p class="error" id="MM-YY-error">{{ monthYearErrorMsgD }}</p>
-							</div> -->
 
 							<div class="CVC fields-wraper" v-bind:data-error="cvcNum.inputError">
 								<label for="for-CVC" >
 									<p>CVC</p>
 									<div class="ffinput-div">
 										<input type="number" id="for-CVC" class="ffinput" placeholder="e.g. 123" aria-describedby="CVC-error"
-										v-model="cvcNum.inputText">
+										v-bind:ref="cvcNum.reef" v-model="cvcNum.inputText">
 										<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 									</div>
 								</label>
-								<p class="error" id="CVC-error">{{ cvcNum.inputErrorMsgD }}</p>
+								<p class="error" id="CVC-error" aria-live="polite">{{ cvcNum.inputErrorMsgD }}</p>
 							</div>
 
 						</div>
 
 						<button type="submit" class="sub-btn">Confirm</button>
 					</form>
+					<!-- <button  class="sub-btn" v-on:click="check">Check</button> -->
 					<div class="success-message" v-else>
 						<img src="./images/icon-complete.svg" class="suces-icon" alt="">
 						<p class="suces-msg-prim">Thank you!</p>
 						<p class="suces-msg-sec">We've added your card details</p>
 						<button class="cont-btn" v-on:click="onContinue">Continue</button>
 					</div>
+					
 				</div>
 			</section>
+			
 		</main>
 		<!-- <footer class="footer"></footer> -->
 	</div>

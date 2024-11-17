@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <label for="text_input">Name     
+        </label>
+        <input type="text" placeholder="name" id="text_input" ref="textInput" aria-describedby="error_id" aria-invalid="false">
+        <p id="error_id" aria-live="polite">
+            {{ error }}
+        </p>
+        <button id="submit" v-on:click="check">submit</button> -->
+
+        <div class="Card-Number fields-wraper" v-bind:data-error="inputError">
+            <label for="for-Card-Number" class="field-label-gap">
+                <p>Card Number</p>
+                <div class="ffinput-div">
+                    <input type="text" placeholder="e.g. 1234 5678 9123 0000" id="for-Card-Number" 
+                    class="ffinput"  aria-describedby="Card-Number-error" aria-invalid="false"
+                    ref="textInput" v-model="inputText">
+                    <span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
+                </div>
+            </label>
+            <p class="error" id="Card-Number-error" aria-live="polite">{{ error }}</p>
+        </div>
+
+        <div class="Card-Number fields-wraper" v-bind:data-error="NameinputError">
+            <label for="for-Name" class="field-label-gap">
+                <p>Name</p>
+                <div class="ffinput-div">
+                    <input type="text" placeholder="e.g. 1234 5678 9123 0000" id="for-Name" 
+                    class="ffinput"  aria-describedby="Name-error" aria-invalid="false"
+                    ref="NameTextInput" v-model="NameinputText">
+                    <span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
+                </div>
+            </label>
+            <p class="error" id="Name-error" aria-live="polite">{{ Nameerror }}</p>
+        </div>
+
+        <div class="Card-Number fields-wraper" v-bind:data-error="CarinputError">
+            <label for="for-Car" class="field-label-gap">
+                <p>Car</p>
+                <div class="ffinput-div">
+                    <input type="text" placeholder="e.g. 1234 5678 9123 0000" id="for-Car" 
+                    class="ffinput"  aria-describedby="Car-error" aria-invalid="false"
+                    ref="CartextInput" v-model="CarinputText">
+                    <span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
+                </div>
+            </label>
+            <p class="error" id="Car-error" aria-live="polite">{{ Carerror }}</p>
+        </div>
+
+        <div class="Card-Number fields-wraper" v-bind:data-error="BikeinputError">
+            <label for="for-Bike" class="field-label-gap">
+                <p>Bike</p>
+                <div class="ffinput-div">
+                    <input type="text" placeholder="e.g. 1234 5678 9123 0000" id="for-Bike" 
+                    class="ffinput"  aria-describedby="Bike-error" aria-invalid="false"
+                    ref="BiketextInput" v-model="BikeinputText">
+                    <span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
+                </div>
+            </label>
+            <p class="error" id="Bike-error" aria-live="polite">{{ Bikeerror }}</p>
+        </div>
+
+        <button id="submit" v-on:click="check">submit</button>
+
+    </div>
+
+    <script type="module">
+        import { createApp } from './static/Vueapp/vue@3/vue.esm-browser.js'
+
+        createApp({
+            data() {
+                return {
+                    inputError: false,
+                    inputText: "",
+                    error: "",
+
+                    NameinputError: false,
+                    NameinputText: "",
+                    Nameerror: "",
+
+                    CarinputError: false,
+                    CarinputText: "",
+                    Carerror: "",
+
+                    BikeinputError: false,
+                    BikeinputText: "",
+                    Bikeerror: "",
+                }
+            },
+
+            watch: {
+            },
+
+            created() {
+                let todo = 'todo';
+            },
+            computed: {
+            },
+            methods: {
+                check() {
+
+
+                    // const input = document.getElementById("text_input");
+                    // const error = document.getElementById("error_id");
+                    // const input = this.$refs.NameinputText;
+                    // this.inputError = true;
+
+                    // // error.innerHTML = "error for this field";
+                    // this.Nameerror = "error for this field";
+                    // input.focus();
+
+                    const input = this.$refs.textInput;
+                    this.error = "";
+                    // input.focus();
+
+                    const Nameinput = this.$refs.NameTextInput;
+                    this.Nameerror = "Name error for this field";
+                    Nameinput.focus();
+
+                    const Carinput = this.$refs.CartextInput;
+                    this.Carerror = "Car error for this field";
+                    // Carinput.focus();
+
+                    const Bikeinput = this.$refs.BiketextInput;
+                    this.Bikeerror = "Bike error for this field";
+                    // Bikeinput.focus();
+
+                }
+            },
+
+            mounted() {
+                // todo    
+            }
+
+        }).mount('#app')
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <label for="text_input">Name     
+        </label>
+        <input type="text" placeholder="name" id="text_input" ref="textInput" aria-describedby="error_id" aria-invalid="false">
+        <p id="error_id" aria-live="polite">
+            {{ error }}
+        </p>
+        <button id="submit" v-on:click="check">submit</button>
+
+        <div class="Card-Number fields-wraper" v-bind:data-error="inputError">
+            <label for="for-Card-Number" class="field-label-gap">
+                <p>Card Number</p>
+                <div class="ffinput-div">
+                    <input type="text" placeholder="e.g. 1234 5678 9123 0000" id="for-Card-Number" 
+                    class="ffinput"  aria-describedby="Card-Number-error" aria-invalid="false"
+                    ref="textInput" v-model="inputText">
+                    <span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
+                </div>
+            </label>
+            <p class="error" id="Card-Number-error" aria-live="polite">{{ error }}</p>
+        </div>
+        <button id="submit" v-on:click="check">submit</button>
+
+    </div>
+
+    <script type="module">
+        import { createApp } from './static/Vueapp/vue@3/vue.esm-browser.js'
+
+        createApp({
+            data() {
+                return {
+                    inputError: false,
+                    inputText: "",
+                    error: "",
+                }
+            },
+
+            watch: {
+            },
+
+            created() {
+                let todo = 'todo';
+            },
+            computed: {
+            },
+            methods: {
+                check() {
+                    // const input = document.getElementById("text_input");
+                    // const error = document.getElementById("error_id");
+                    const input = this.$refs.textInput;
+                    this.inputError = true;
+
+                    // error.innerHTML = "error for this field";
+                    this.error = "error for this field";
+                    input.focus();
+                }
+            },
+
+            mounted() {
+                // todo    
+            }
+
+        }).mount('#app')
+    </script>
+
+</body>
+</html> -->
