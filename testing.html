@@ -17,19 +17,34 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', ()=> {
-            let text_input = document.getElementById('text_input');
-            let error_id = document.getElementById('error_id');
-            let submit_btn = document.getElementById('submit');
-            error_id.style.display = "none";
+            // const target = { a: 1, b: 2 };
+            // const source = { b: 4, c: 5 };
 
-            let error = false
+            const myobj = new Object;
+            myobj["a"] = 1
+            myobj["b"] = 2
+            myobj["c"] = 3
+
+            myobj["a"] = 4
+            myobj["b"] = 4
+            myobj["c"] = 4
+
+            // const returnedTarget = Object.assign(target, source);
+
+            console.log(myobj);
+            // let text_input = document.getElementById('text_input');
+            // let error_id = document.getElementById('error_id');
+            // let submit_btn = document.getElementById('submit');
+            // error_id.style.display = "none";
+
+            // let error = false
             
-            submit_btn.onclick = () => {
-                error_id.innerHTML = "This field is required";
-                text_input.focus();
-                error_id.style.display = "block";
-                error = true
-            }
+            // submit_btn.onclick = () => {
+            //     error_id.innerHTML = "This field is required";
+            //     text_input.focus();
+            //     error_id.style.display = "block";
+            //     error = true
+            // }
 
         })
     </script>
