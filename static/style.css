@@ -43,18 +43,18 @@
 
 .card-number {
     /* font-size: 5vw; */
-    font-size: 23px;
+    font-size: 1.438rem; /* 23px */
     margin-bottom: 4%;
 }
 .card-holder-name {
     /* font-size: 2.5vw; */
-    font-size: 14px;
+    font-size: 0.875rem; /* 14px */
 }
 
 .card-back > p {
     color: var(--clr-nuet-1);
     /* font-size: 3.5vw; */
-    font-size: 16px;
+    font-size: 1rem; /* 16px */
     right: 12%;
     top: 43%;
 }
@@ -73,12 +73,12 @@
     width: 90%;
     margin-inline: auto;
     /* margin-top: 13%; */
-    margin-top: 80px;
+    margin-top: 5rem; /* 80px */
     color: var(--clr-nuet-4);
 }
 
 .form-form > div {
-    margin-bottom: 15px;
+    margin-bottom: 0.938rem; /* 15px */
 }
 
 /* .form-field-input {
@@ -104,7 +104,7 @@ border-radius: 10px;
 
 
 .field-label-gap {
-    margin-block: 5px;
+    margin-block: 0.313rem; /* 5px */
 }
 
 .sub-btn, .cont-btn {
@@ -112,31 +112,31 @@ border-radius: 10px;
     background-color: var(--clr-nuet-4);
     color: var(--clr-nuet-1);
     border: 1px solid var(--clr-nuet-4);
-    padding: 12px;
-    border-radius: 5px;
+    padding: 0.75rem; /* 12px */
+    border-radius:  0.313rem; /* 5px */
     color: var(--clr-nuet-1);
 }
 
 .success-message { 
-    margin-top: 30px;
+    margin-top: 1.875rem; /* 30px */
     text-align: center;
 }
 .suces-icon {
     width: 75px;
     margin-inline: auto;
-    margin-bottom: 35px;
+    margin-bottom: 2.188rem; /* 35px */
 }
 .suces-msg-prim {
-    font-size: 30px;
+    font-size: 1.875rem; /* 30px */
     color: var(--clr-nuet-4);
     font-weight: var(--fw-medium);
     text-transform: uppercase;
 
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem; /* 20px */
 }
 .suces-msg-sec {
     color: var(--clr-nuet-3);
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem; /* 20px */
 }
 
 
@@ -145,9 +145,9 @@ border-radius: 10px;
     /* border: 1px solid black; */
     --Cu-border: 1px;
     --cu-border-redius: 5px;
-    padding: 12px;
+    padding: 0.75rem; /* 12px */
     position: relative;
-    margin-block: 5px;
+    margin-block: 0.313rem ; /* 5px */
     /* background-image: linear-gradient(90deg, var(--Linear-gradient-p2), var(--Linear-gradient-p1));
     border-radius: calc( var(--Cu-border) + var(--cu-border-redius) ); */
 }
@@ -200,7 +200,7 @@ border-radius: 10px;
     text-transform: uppercase;
 }
 .input-label > p {
-    font-size: 14px;
+    font-size: 0.875rem; /* 14px */
     font-weight: var(--fw-medium);
 }
 
@@ -241,7 +241,7 @@ border-radius: 10px;
     }
 
     .card-number {
-        font-size: 30px;
+        font-size: 1.875rem; /* 30px */
         margin-bottom: 1rem;
     }
     .card-holder-name {
@@ -264,13 +264,6 @@ border-radius: 10px;
         left:auto;
         z-index: 1;
       }
-
-
-
-
-
-
-
 
 
     .form {

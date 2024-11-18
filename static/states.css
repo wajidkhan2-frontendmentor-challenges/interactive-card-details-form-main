@@ -14,7 +14,7 @@
 .fields-time-wraper[data-error=true] > .error {
     display: block;
     color: var(--clr-prim-1);
-    font-size: 14px;
+    font-size: 0.875rem; /* 14px */
     font-weight: var(--fw-medium);
 }
 .fields-wraper[data-error=true] .ffinput-aa, 

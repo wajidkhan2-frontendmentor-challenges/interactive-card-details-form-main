@@ -17,12 +17,12 @@
 
 .mm-yy-fields {
     display: flex;
-    gap: 10px;
+    gap: 0.625rem; /* 10px */
 }
 
 .mm-yy-cvc {
     display: flex;
-    gap: 10px;
+    gap: 0.625rem; /* 10px */
 }
 
 .mm-yy-sec {
