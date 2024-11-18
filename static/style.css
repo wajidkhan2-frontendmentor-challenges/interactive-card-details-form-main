@@ -147,6 +147,7 @@ border-radius: 10px;
     --cu-border-redius: 5px;
     padding: 12px;
     position: relative;
+    margin-block: 5px;
     /* background-image: linear-gradient(90deg, var(--Linear-gradient-p2), var(--Linear-gradient-p1));
     border-radius: calc( var(--Cu-border) + var(--cu-border-redius) ); */
 }
@@ -193,6 +194,14 @@ border-radius: 10px;
     background-image: linear-gradient(90deg, var(--Linear-gradient-p2), var(--Linear-gradient-p1));
 
     opacity: 0;
+}
+
+.input-label {
+    text-transform: uppercase;
+}
+.input-label > p {
+    font-size: 14px;
+    font-weight: var(--fw-medium);
 }
 
 .ffinput {

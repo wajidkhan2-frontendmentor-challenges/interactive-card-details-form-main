@@ -57,7 +57,7 @@
 					<p id="alive" class="sr-only" aria-live="polite" role="status" aria-relevant="all">{{ AliveMsg }}</p>
 					<form action="#" class="form-form" v-if="successMessage == false" v-on:submit="onFSubmite">
 						<div class="card-holder fields-wraper" v-bind:data-error="holderName.inputError">
-							<label for="for-card-holder" class="field-label-gap">
+							<label for="for-card-holder" class="input-label field-label-gap">
 								<p>Cardholder Name</p>
 								<div class="ffinput-div">
 									<input type="text" placeholder="e.g. Jane Appleseed" id="for-card-holder" 
@@ -70,7 +70,7 @@
 						</div>
 
 						<div class="Card-Number fields-wraper" v-bind:data-error="cardNumber.inputError">
-							<label for="for-Card-Number" class="field-label-gap">
+							<label for="for-Card-Number" class="input-label field-label-gap">
 								<p>Card Number</p>
 								<div class="ffinput-div">
 									<!-- placeholder="e.g. 1234 5678 9123 0000" aria-invalid="false" -->
@@ -85,7 +85,7 @@
 						</div>
 
 						<div class="mm-yy-cvc">
-							<div class="mm-yy-sec fields-time-wraper" v-bind:data-error="dateError">
+							<div class="mm-yy-sec input-label  fields-time-wraper" v-bind:data-error="dateError">
 								<p>Exp. Date (MM/YY)</p>
 								<div class="mm-yy-fields">
 									<label for="t-mm" class="warning" v-bind:data-error="date.month.inputError">
@@ -109,7 +109,7 @@
 							</div>
 
 							<div class="CVC fields-wraper" v-bind:data-error="cvcNum.inputError">
-								<label for="for-CVC" >
+								<label for="for-CVC" class="input-label">
 									<p>CVC</p>
 									<div class="ffinput-div">
 										<input type="number" id="for-CVC" class="ffinput" placeholder="e.g. 123" aria-describedby="CVC-error"

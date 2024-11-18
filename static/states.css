@@ -15,6 +15,7 @@
     display: block;
     color: var(--clr-prim-1);
     font-size: 14px;
+    font-weight: var(--fw-medium);
 }
 .fields-wraper[data-error=true] .ffinput-aa, 
 .warning[data-error=true] .ffinput-aa {
