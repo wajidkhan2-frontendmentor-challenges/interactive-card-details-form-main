@@ -11,7 +11,7 @@ createApp({
                 inputText: "",
                 inputTextS: "Holder Name",
                 inputError: false,
-                inputErrorMsgD: "awdwad"
+                inputErrorMsgD: ""
             },
 
             cardNumber: {
@@ -19,7 +19,7 @@ createApp({
                 inputText: "",
                 inputTextS: "0000 0000 0000 0000",
                 inputError: false,
-                inputErrorMsgD: "awdaw"
+                inputErrorMsgD: ""
             },
 
             date: {
@@ -47,7 +47,7 @@ createApp({
                 inputText: "",
                 inputTextS: "000",
                 inputError: false,
-                inputErrorMsgD: "adwad"
+                inputErrorMsgD: ""
             },
         }
     },
@@ -70,7 +70,6 @@ createApp({
             let splitOn = 4;
             let spacedon = 0
 
-            console.log(strlength)
             this.cardNumber.inputTextS = "";
             this.cardNumber.inputError = false;
             if (str.split(" ").length > 1) { 
@@ -146,7 +145,6 @@ createApp({
 
             } else { this.holderName.inputError = false; }
 
-            console.log(this.cardNumber.inputText.length)
             if (this.cardNumber.inputText == "") {
 
                 this.cardNumber.inputError = true;
@@ -241,7 +239,6 @@ createApp({
                 const keys = Object.keys(errorInputs);
                 this.SpeakAlive(errorInputs[keys[0]].msg);
                 this.$refs[errorInputs[keys[0]].ref].focus();
-                console.log(errorInputs)
 
             }
         },
@@ -290,31 +287,35 @@ createApp({
             this.date.month.inputError = false;
             if (this.date.month.inputText == "" && 
             typeof  this.date.month.inputText == "string") {
+
                 this.date.month.inputTextS = "00";
                 this.date.month.inputError = false;
-                console.log("yes")
+
             } else if (this.date.month.inputText < 1 || this.date.month.inputText > 12) {
+
                 this.date.month.inputTextS = "00";
                 this.date.month.inputError = true;
                 this.date.inputErrorMsgD = "Invalid Month";
                 this.SpeakAlive(this.date.inputErrorMsgD);
-                // this.$refs[this.date.month.reef].focus();
                 bothError++;
+
             } else { this.date.month.inputTextS = this.fancyNumber(this.date.month.inputText); }
 
             this.date.year.inputError = false;
             if (this.date.year.inputText == "" && 
             typeof  this.date.year.inputText == "string") {
+
                 this.date.year.inputTextS = "00";
                 this.date.year.inputError = false;
-                console.log("yes")
+
             } else if (this.date.year.inputText < 1 || this.date.year.inputText > 99) {
+
                 this.date.year.inputTextS = "00";
                 this.date.year.inputError = true;
                 this.date.inputErrorMsgD = "Invalid Year";
                 this.SpeakAlive(this.date.inputErrorMsgD);
-                // this.$refs[this.date.year.reef].focus();
                 bothError++;
+
             } else { this.date.year.inputTextS = this.fancyNumber(this.date.year.inputText); }
             
             if (this.date.focused != "") { this.$refs[this.date.focused].focus(); }
@@ -337,7 +338,6 @@ createApp({
 
     mounted() {
         // todo    
-        console.log(this.$refs[this.date.month.reef])
     }
 
 }).mount('#app')

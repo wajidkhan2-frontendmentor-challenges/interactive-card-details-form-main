@@ -30,7 +30,7 @@
 									<p class="card-number"> {{ cardNumber.inputTextS }} </p>
 									
 									<div class="card-holder-name flex-box flex-row flex-spaced">
-										<p>{{ holderName.inputTextS }}</p>
+										<p class="card-holder-pers-name">{{ holderName.inputTextS }}</p>
 										<p>{{ date.month.inputTextS }}/{{ date.year.inputTextS }} </p>
 									</div>
 								</div> 
@@ -58,9 +58,9 @@
 					<form action="#" class="form-form" v-if="successMessage == false" v-on:submit="onFSubmite">
 						<div class="card-holder fields-wraper" v-bind:data-error="holderName.inputError">
 							<label for="for-card-holder" class="input-label field-label-gap">
-								<p>Cardholder Name</p>
+								<p class="p-label">Cardholder Name</p>
 								<div class="ffinput-div">
-									<input type="text" placeholder="e.g. Jane Appleseed" id="for-card-holder" 
+									<input type="text" placeholder="e.g. Jane Appleseed" id="for-card-holder" autocomplete="off"
 									class="ffinput"  aria-describedby="card-holder-error" v-bind:aria-invalid="holderName.inputError"
 									v-bind:ref="holderName.reef" v-model="holderName.inputText">
 									<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
@@ -71,10 +71,10 @@
 
 						<div class="Card-Number fields-wraper" v-bind:data-error="cardNumber.inputError">
 							<label for="for-Card-Number" class="input-label field-label-gap">
-								<p>Card Number</p>
+								<p class="p-label">Card Number</p>
 								<div class="ffinput-div">
 									<!-- placeholder="e.g. 1234 5678 9123 0000" aria-invalid="false" -->
-									<input type="text"  id="for-Card-Number" placeholder="e.g. 1234 5678 9123 0000"
+									<input type="text"  id="for-Card-Number" placeholder="e.g. 1234 5678 9123 0000" autocomplete="off"
 									class="ffinput"  aria-describedby="Card-Number-error" v-bind:aria-invalid="cardNumber.inputError"
 									v-bind:ref="cardNumber.reef" v-model="cardNumber.inputText">
 									<!-- v-on:input="cardNumberInput"> -->
@@ -86,20 +86,20 @@
 
 						<div class="mm-yy-cvc">
 							<div class="mm-yy-sec input-label  fields-time-wraper" v-bind:data-error="dateError">
-								<p>Exp. Date (MM/YY)</p>
+								<p class="p-label">Exp. Date (MM/YY)</p>
 								<div class="mm-yy-fields">
 									<label for="t-mm" class="warning" v-bind:data-error="date.month.inputError">
 										<div class="ffinput-div">
-											<input type="number" class="ffinput" id="t-mm" placeholder="MM" aria-describedby="MM-YY-error"  
-											aria-label="Month" v-bind:aria-invalid="date.month.inputError" v-bind:ref="date.month.reef" 
+											<input type="number" class="ffinput" id="t-mm" placeholder="MM" autocomplete="off" aria-label="Month"  
+											aria-describedby="MM-YY-error" v-bind:aria-invalid="date.month.inputError" v-bind:ref="date.month.reef"
 											v-on:focus="date.focused = date.month.reef" v-model="date.month.inputText">
 											<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 										</div>
 									</label>
 									<label for="t-yy" class="warning" v-bind:data-error="date.year.inputError">
 										<div class="ffinput-div">
-											<input type="number" class="ffinput" id="t-yy" placeholder="YY" aria-describedby="MM-YY-error" 
-											aria-label="Year" v-bind:aria-invalid="date.year.inputError" v-bind:ref="date.year.reef"
+											<input type="number" class="ffinput" id="t-yy" placeholder="YY" autocomplete="off" aria-label="Year"  
+											aria-describedby="MM-YY-error" v-bind:aria-invalid="date.year.inputError" v-bind:ref="date.year.reef"
 											v-on:focus="date.focused = date.year.reef" v-model="date.year.inputText">
 											<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 										</div>
@@ -110,9 +110,9 @@
 
 							<div class="CVC fields-wraper" v-bind:data-error="cvcNum.inputError">
 								<label for="for-CVC" class="input-label">
-									<p>CVC</p>
+									<p class="p-label">CVC</p>
 									<div class="ffinput-div">
-										<input type="number" id="for-CVC" class="ffinput" placeholder="e.g. 123" aria-describedby="CVC-error"
+										<input type="number" id="for-CVC" class="ffinput" placeholder="e.g. 123" autocomplete="off" aria-describedby="CVC-error"
 										v-bind:aria-invalid="cvcNum.inputError" v-bind:ref="cvcNum.reef" v-model="cvcNum.inputText">
 										<span class="ffinput-aa"></span><span class="ffinput-ab"></span><span class="ffinput-ac"></span>
 									</div>
